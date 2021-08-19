@@ -1,30 +1,41 @@
 package com.javacourse.project.hibernateAndJpa.Entities;
+import java.util.Set;
+
 import javax.persistence.*;
 @Entity
 @Table(name="city")
 public class City {
 	
-	@Id
-	
+	@Id	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	private int id;
+	private Long  id;
 	@Column(name="name")
 	private String name;
 	@Column(name="country")
 	private String country;
-	public City(int id, String name, String country) {
-		super();
-		this.id = id;
+
+
+	
+
+
+
+	public City() {}
+	
+	
+	public City(String name, String country) {
+		
 		this.name = name;
 		this.country = country;
 	}
-	
-	public City() {}
-	public int getId() {
+
+
+
+
+	public Long  getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -39,6 +50,7 @@ public class City {
 	public void setCountry(String country) {
 		this.country = country;
 	}
+
 	
 
 }

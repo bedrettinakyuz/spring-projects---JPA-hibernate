@@ -50,7 +50,7 @@ public class CityManager implements ICityService {
 
 	@Override
 	@Transactional
-	public City getById(int id) {
+	public City getById(Long id) {
 		
 		return this.cityDal.getById(id);
 	}

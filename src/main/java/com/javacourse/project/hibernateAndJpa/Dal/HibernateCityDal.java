@@ -55,7 +55,7 @@ public class HibernateCityDal implements ICityDal {
 	}
 	@Transactional
 	@Override
-	public City getById(int id) {
+	public City getById(Long id) {
 		Session session = entityManager.unwrap(Session.class);
 		City city = session.get(City.class, id);
 		return city;

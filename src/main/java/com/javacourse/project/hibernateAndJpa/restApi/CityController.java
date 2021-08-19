@@ -22,7 +22,7 @@ public class CityController {
 	}
 	
 	@GetMapping("/cities/{id}")
-	public City getById(@PathVariable int id){
+	public City getById(@PathVariable Long id){
 		
 		return cityService.getById(id);
 	}
@@ -46,5 +46,8 @@ public class CityController {
 		cityService.delete(city);
 		return true;
 	}
+	
+	
+
 	
 }
