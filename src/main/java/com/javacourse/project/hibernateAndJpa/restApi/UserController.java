@@ -1,6 +1,7 @@
 package com.javacourse.project.hibernateAndJpa.restApi;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 import com.javacourse.project.hibernateAndJpa.Entities.*;
+import com.javacourse.project.hibernateAndJpa.Exception.ResourceNotFoundException;
 import com.javacourse.project.hibernateAndJpa.Business.IUserService;
 
 @RestController
@@ -35,10 +37,11 @@ public class UserController {
     
 
     @GetMapping("/user/{id}")
-    public ResponseEntity<User> getById(@PathVariable Long id) {
+    public User getById(@PathVariable Long id) {
     	
-
-    	return new ResponseEntity<User>(userService.getByID(id),HttpStatus.OK);
+    	return userService.getByID(id)
+    			.orElseThrow(()-> new ResourceNotFoundException("User not found"  + id));
+    	
     	
    }
   @DeleteMapping ("/delete/{id}")

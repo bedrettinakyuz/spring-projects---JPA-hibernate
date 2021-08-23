@@ -1,6 +1,7 @@
 package com.javacourse.project.hibernateAndJpa.Business;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.javacourse.project.hibernateAndJpa.Entities.City;
 
@@ -10,5 +11,5 @@ public interface ICityService {
 	void add(City city);
 	void update(City city);
 	void delete(City city);
-	City getById(Long id);
+	Optional<City> getById(Long id);
 }

@@ -1,5 +1,6 @@
 package com.javacourse.project.hibernateAndJpa.Business;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -21,9 +22,9 @@ public class UserManager implements IUserService {
 		return ((List<User>)this.userRepository.findAll());
 	}
 	@Transactional
-	public User getByID(Long id) {
+	public Optional<User> getByID(Long id) {
 		
-		return userRepository.findById(id).get();
+		return userRepository.findById(id);
 	}
 
 	@Transactional
@@ -37,6 +38,8 @@ public class UserManager implements IUserService {
 	
 		userRepository.deleteById(id);
 	}
+	
+	
 	
 	
 	

@@ -1,6 +1,7 @@
 package com.javacourse.project.hibernateAndJpa.Business;
 import com.javacourse.project.hibernateAndJpa.Dal.*;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -50,7 +51,7 @@ public class CityManager implements ICityService {
 
 	@Override
 	@Transactional
-	public City getById(Long id) {
+	public Optional<City> getById(Long id) {
 		
 		return this.cityDal.getById(id);
 	}

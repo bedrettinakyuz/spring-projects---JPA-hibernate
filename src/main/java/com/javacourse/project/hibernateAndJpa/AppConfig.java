@@ -3,6 +3,7 @@ package com.javacourse.project.hibernateAndJpa;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.ResponseEntity;
 
 @Configuration
 public class AppConfig {
@@ -13,4 +14,5 @@ public class AppConfig {
 	    return new ModelMapper();
 	    
 	}
+
 }

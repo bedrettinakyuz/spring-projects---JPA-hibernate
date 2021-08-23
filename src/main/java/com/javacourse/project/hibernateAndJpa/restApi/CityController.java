@@ -1,9 +1,20 @@
 package com.javacourse.project.hibernateAndJpa.restApi;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.javacourse.project.hibernateAndJpa.Business.*;
-import java.util.*;
 import com.javacourse.project.hibernateAndJpa.Entities.*;
+import com.javacourse.project.hibernateAndJpa.Exception.ResourceNotFoundException;
+
+import java.util.*;
 @RestController
 @RequestMapping("/api")
 public class CityController {
@@ -24,7 +35,9 @@ public class CityController {
 	@GetMapping("/cities/{id}")
 	public City getById(@PathVariable Long id){
 		
-		return cityService.getById(id);
+		return this.cityService.getById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("City not found :" + id) );
+				
 	}
 	
 	@PostMapping("/addCity")

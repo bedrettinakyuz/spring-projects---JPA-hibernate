@@ -1,6 +1,7 @@
 package com.javacourse.project.hibernateAndJpa.Dal;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
@@ -55,10 +56,12 @@ public class HibernateCityDal implements ICityDal {
 	}
 	@Transactional
 	@Override
-	public City getById(Long id) {
+	public Optional<City> getById(Long id) {
 		Session session = entityManager.unwrap(Session.class);
+		
 		City city = session.get(City.class, id);
-		return city;
+		Optional<City> opt = Optional.ofNullable(city);
+		return opt;
 	}
  
 }
